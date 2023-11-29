@@ -28,6 +28,7 @@ exports.getAllPosts = catchAsyncErrors( async (req, res) => {
     })
 })
 
+// create review 
 exports.createPostReview = catchAsyncErrors(async (req, res, next) => {
     const { comment, postId } = req.body;
 
@@ -52,10 +53,6 @@ exports.createPostReview = catchAsyncErrors(async (req, res, next) => {
         post.reviews.push(review);
         post.numofComments = post.reviews.length;
     }
-
-    let avg = 0;
-
-   
 
     await post.save({ validateBeforeSave: false });
 
